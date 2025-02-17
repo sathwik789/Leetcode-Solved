@@ -1,0 +1,22 @@
+vector<int> Solution::prevSmaller(vector<int> &A) {
+    int n = A.size();
+    int nse[n];
+    stack<int>st;
+    for(int i =0;i<n;i++){
+        while(!st.empty() && st.top() >= A[i]){
+            st.pop();
+        }
+        if(st.empty()){
+            nse[i] = -1;
+        }
+        else{
+            nse[i] = st.top();
+        }
+        st.push(A[i]);
+    }
+    vector<int> arr;
+    for(int i =0;i<n;i++){
+        arr.push_back(nse[i]);
+    }
+    return arr;
+}
